@@ -14,6 +14,15 @@ public class UserPojo implements Serializable {
     private  String userId;
     private  String userName;
 
+    public UserPojo() {
+
+    }
+
+    public UserPojo(String userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
+    }
+
     public String getUserId() {
         return userId;
     }
