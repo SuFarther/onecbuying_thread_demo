@@ -1,6 +1,7 @@
 package com.onecbuying;
 
 import com.onecbuying.thread02.CreateThreadDemo02;
+import com.onecbuying.thread03.CreateThreadDemo03;
 
 /**
  * @author 苏东坡
@@ -40,10 +41,32 @@ public class ThreadDemo {
         /**
          *  使用实现runnable接口方式创建线程
          */
-        CreateThreadDemo02 t2 = new CreateThreadDemo02();
-        Thread thread = new Thread(t2);
-        thread.start();
-         for(int i = 0; i <30;i++){
+//        CreateThreadDemo02 t2 = new CreateThreadDemo02();
+//        Thread thread = new Thread(t2);
+//        thread.start();
+//         for(int i = 0; i <30;i++){
+//            System.out.println("主线程,i"+i);
+//        }
+
+        /**
+         * 使用匿名内部类创建线程
+         */
+//        CreateThreadDemo03 t3 = new CreateThreadDemo03();
+//        Thread thread = new Thread(t3);
+//        thread.start();
+//        for (int i = 0; i <10; i++) {
+//            System.out.println("主线程,i"+i);
+//        }
+         Thread t1 = new Thread(new Runnable() {
+             @Override
+             public void run() {
+                 for (int i = 0; i <10; i++) {
+                   System.out.println("子线程,i"+i);
+                 }
+             }
+         });
+        t1.start();
+        for (int i = 0; i <10; i++) {
             System.out.println("主线程,i"+i);
         }
     }
