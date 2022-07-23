@@ -20,28 +20,28 @@ public class JoinThreadDemo2 {
             }
         });
         t1.start();
-        try {
-            t1.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    t1.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 for (int i = 0; i < 3; i++) {
                     System.out.println("我是T2线程,i:"+i);
                 }
             }
         });
         t2.start();
-        try {
-            t2.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         Thread t3 = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    t2.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 for (int i = 0; i < 3; i++) {
                     System.out.println("我是T3线程,i:"+i);
                 }
