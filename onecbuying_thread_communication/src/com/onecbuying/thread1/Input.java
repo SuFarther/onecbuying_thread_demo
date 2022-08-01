@@ -21,6 +21,14 @@ public class Input extends Thread{
         int count = 0;
         while(true) {
             synchronized(resource){
+                if(resource.flag){
+                    try {
+                        // 当前线程变为等待，但是可以释放锁
+                        resource.wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 if(count  ==  0){
                     resource.userName = "小红";
                     resource.sex = "女";
@@ -29,6 +37,9 @@ public class Input extends Thread{
                     resource.sex = "男";
                 }
                 count = (count + 1) % 2;
+                resource.flag = true;
+                // 唤醒当前线程
+                resource.notify();
             }
         }
     }

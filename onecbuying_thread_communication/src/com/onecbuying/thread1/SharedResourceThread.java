@@ -14,6 +14,7 @@ public class SharedResourceThread {
 
     /**
      * 线程通讯标识
+     * true 生产者线程等待,消费者可以进行消费 false 生产者可以写, 消费者变为等待
      */
     public boolean flag =false;
 }
