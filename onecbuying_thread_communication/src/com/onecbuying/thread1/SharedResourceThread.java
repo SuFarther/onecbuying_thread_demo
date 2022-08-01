@@ -11,4 +11,9 @@ package com.onecbuying.thread1;
 public class SharedResourceThread {
     public String userName;
     public String sex;
+
+    /**
+     * 线程通讯标识
+     */
+    public boolean flag =false;
 }
